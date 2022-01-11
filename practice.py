@@ -394,17 +394,342 @@ print(" -- 축하합니다 -- ")
 
 #=========================================================
 
+print("=============if문============")
+
+# # if 조건: 
+#     #실행 명령문 
+
+# weather = '비'
+# if weather =='비' :
+#     print("오늘은 비가 내립니다.")
+# elif weather == "미세먼지" :
+#     print("마스크를 챙기세요.")
+# else :
+#     print("준비물 필요 없어요.")   
 
 
+# weather = input("오늘 날씨는 어때요? ") 
+# '''input()은 사용자 입력 받는 문장, 어때요? 다음에 커서가 위치하고 사용자의 입력을 기다린다. 
+# 사용자의 입력을 받으면 weather변수에 저장한다.''' 
+
+# if weather =='비' or weather == '눈' :  # or로 조건을 추가할 수 있다. 
+#     print("우산을 챙기세요.")
+# elif weather == "미세먼지" :
+#     print("마스크를 챙기세요.")
+# else :
+#     print("준비물 필요 없어요.")   
 
 
+# # 기온 입력 > 숫자, 정수 입력 
+# temp = int(input("현재 기온: "))  # 사용자가 입력한 값을 정수 형태로 현환 후 temp 변수에 저장 
+# if temp >= 30 : 
+#     print("외출 자제")
+# elif 10 <= temp and temp >30 :
+#     print("날이 좋네요. 밖에서 봐요")
+# else:
+#     print("적절한 의복을 갖춘 후 외출하세요.")
+
+print("==============for==============")
+
+for waiting_no in [0,1,2,3,4,5]: # 순차적으로 커질 때는 range()를 사용하면 된다./ range(5)> 0부터 5미만 까지 범위가 주어짐. range(~부터, ~전까지)
+    print ("대기번호: {0}".format(waiting_no))
+
+for waiting_no in range(1,10): 
+    print ("대기번호: {0}".format(waiting_no))
+
+# 리스트에서 원소 추출 후 for문 실행 
+starbucks = ['이동열', '하원', '아이사', '사나']
+for customer in starbucks: 
+    print("\"{0}\"고객님 커피가 준비되었습니다.".format(customer))
+
+print("=============while============")
+customer = "아이사"
+index =5 
+while index >=1:  # while (조건): > 조건 이 만족할 때 까지 반복하라 / 인덱스가 1보다 같거나 클 때 까지 반복하라 
+ print("\"{0}\"고객님 커피가 준비되었습니다. {1}번 남았습니다. ".format(customer, index))
+ index -= 1 
+if index == 0 :
+    print("커피 재고가 모두 소진됐습니다.") 
+
+# while 문 무한루프 생성 > while True : 
+# 무한루프 탈출 > ctrl + c : 강제종료 
+
+print("==========continue and break===========")
+#반복문 내에서 사용가능. 
+absent = [2, 5] # 결석 
+for student in range(1, 11) :  # 10명의 인원 
+    if student==2 or student ==5 :          # if student in absent: > student 중 absent에 있는 결석자가 있다면, continue 
+        print("{0}번 결석".format(student))
+    else :
+        continue 
+
+for student in range(1, 11) :  # 10명의 인원    
+    if student in absent: 
+        continue
+    else :
+        print("{0}야 책을 읽어줘".format(student))
+
+# 한줄 for문 
+# 출석번호가 1,2,3,4 이고, 아펭 100을 붙이기로 함 -> 101, 102,103,104 
+students = [1,2,3,4]
+students = [i+100 for i in students]  # student에서 값을 불러와 i에 저장하고 +100한 값을 students리스트에 저장. 
+print(students)
+
+#학생 이름을 길이로 변환 , 문자열 정수형태 변환 
+student = ["이동열","피크닉애플","아이패드", "경제기사 궁금증"]
+student = [len(i) for i in student] # student에 들어있는 i의 값의 길이를 파악한 후 student에 저장 
+print(student)
+
+# 학생 이름을 대문자로 변환 
+student = ["leedongyeol","picnic_apple","ipad", "the question of economic article"]
+student = [i.upper() for i in student]
+print(student)
+
+print("============퀴즈=============")
+# 총 탑승 승객 수를 구하는 프로그램 
+# 조건1: 승객별 운행 소요 시간은 5~50분 사이의 난수로 정해집니다. 
+# 조건2: 당신은 소요 시간 5분~15분 사이의 승객만 매칭해야 합니다. 
+
+# cnt = 0 # 총 탑승 인원 
+# from random import * 
+
+# for customer in range(1, 51): # 50명 탑승 조건 
+#     use_time = randint(5, 51) # 조건1
+#     if use_time >=5 and use_time <= 15 :  # 5<= time <= 15 로 표현해도 가능
+#         print ("[0] {0}번째 손님 (소요시간 : {1})".format(customer, use_time))
+#         cnt += 1 
+#     else : 
+#         print ("[ ] {0}번째 손님 (소요시간 : {1})".format(customer, use_time))
+
+# print("총 탑승 승객 : " + str(cnt) +"분")
+
+print("============함수============")
+
+def open_account(): # def + 함수이름(): 
+    print("새로운 계좌가 생성되었습니다.")  # 함수 내용 정의 
+
+open_account()  # 함수 호출은 함수의 이름과 괄호를 적어주면 된다. 
+
+# 입금 함수 
+def deposit(balance, money): # 괄호 내부에 매개변수를 넣어준다. 
+    print("입금이 완료되었습니다. 잔액은 {0} 원입니다.".format(balance+money))
+    return balance + money # 반환값 적어줘야됨 
+
+# 출금 함수 
+def withdraw(balance, money): 
+    if balance < money :    # 잔액보다 많은 양을 출금하려는 경우 
+        print("잔액이 부족합니다.")
+        return 0
+    else :
+        print("출금이 완료되었습니다. 출금 금액 : {0} , 잔액 {1}".format(money, balance-money))
+        return balance - money 
+
+# 야간 출금 함수 
+def withdraw_night(balance, money) : 
+    commission = 100 # 수수료 100원 
+    return commission, balance - money - commission # 수수료가 얼마이고, 잔액이 얼마가 남았는지 > 튜플 형식으로 반환 (컴마를 이용해서)> 여러개의 값을 반환하는데 도움이 된다. 
 
 
+balance = 0 # 계속 더해줄 잔액을 변수로 표현 
+balance = deposit(balance, 100000)
+#balance = withdraw(balance, 20000)
+commission, balance = withdraw_night(balance, 200) # commission과 balance를 동시에 받고 현재 금액인 balance와 수수료의 정수값을 받는다. 
+print("수수료는 {0}원이고, 잔액은 {1}원 입니다. ".format(commission, balance))# 잔액에서 출금과 수수료를 더한 값이 빠진다. 
 
 
+print("========함수의 기본값========")
+
+# def profile(name, age, main_lang):
+#     print("이름: {0}, 나이: {1}, 주 사용 언어: {2}"\
+#         .format(name, age, main_lang))                  # 줄바꿈은 역슬래시 후 엔터 (두 문장은 실제로 한 문장이다.)
+
+#profile 호출 
+#profile("이동열", 26, "Python") 
+
+# 만약 괄호 안에 들어가는 값들이 겹치는 부분이 있는 호출들을 나열해야 한다면, 기본값을 사용한다. 
+
+def profile(name, age = 26, main_lang = "Python"): # 해당 항목에 값이 주어지지않는다면 설정된 기본값들을 사용하겠다. 
+   print("이름: {0}, 나이: {1}, 주 사용 언어: {2}"\
+         .format(name, age, main_lang))
+profile("이동열")
+profile("아이사", 20) # 항목의 값을 변경할 수 있다. 
+profile("카리나")
+
+print("=============키워드 값=============")
+# 키워드를 이용해서 함수에서 받는 매개변수를 순서에 상관없이 정상출력할 수 있다. 
+def profile(name, age, main_lang):
+    print(name, age, main_lang)
+profile(main_lang = "Python", age = 26, name = "이동열") 
+
+print("========가변인자========")
+#end =" " : print문이 끝날 때 줄바꿈을 하지않고 출력을 끝낸다. 
+
+def profile(name, age, lang1, lang2, lang3, lang4): # lang 부분들을 없애고 *lang 형태로 통일하는 것을 가변인자라고 한다. 
+    print("이름: {0}\t나이 : {1}\t".format(name, age), end=" ")
+    print(lang1, lang2, lang3, lang4) # 두 print문이 하나의 줄에 출력된다. 
+
+def profile(name, age,*language): 
+    print("이름: {0}\t나이 : {1}\t".format(name, age), end=" ")
+    for lang in language:
+        print(lang, end=" ")
+    print()
+
+profile("이동열", 20, "python", "java", "c", "c++")  # 서로 다른 개수의 값을 넣어줄 때는 가변인자를 사용한다. "*매개변수"를 의미. 
+profile("아이사", 20, "Kotlin", "Swift")
+
+print("=======지역변수, 전역변수========")
+
+gun =20
+
+def checkpoint(soldiers): 
+    global gun 
+    gun -= soldiers           # 여기서 gun은 지역변수이기 때문에 새로 선언을 해줘야 한다. 다시 선언하기 싫다면 "global 전역변수" 형태로 사용하면 된다. 
+    print("함수 내에 남은 총 : {0}".format(gun))
+
+print("전체 총: {0}".format(gun))
+checkpoint(5) # 5명이 총들고 나감 
+print("남은 총 : {0}".format(gun))
+
+print("==========quiz===========")
+# 표준 체중 구하기 프로그램 
+
+def std_weight(height, gender):  # 매개변수로 키와 성별을 받음 
+    weight = 0        # 지역변수 선언 
+    if gender == "male":                     # male: h*h*22, woman: h*h*21 
+        weight=height*height*22 
+        print("키 {0}cm 남자의 표준 체중은 {1:.2f}kg 입니다.".format(height,weight/10000))
+    elif gender == "woman":
+        weight=height*height*21
+        print("키 {0}cm 여자의 표준 체중은 {1:.2f}kg 입니다.".format(height,weight/10000))
 
 
+std_weight(175,"male") 
 
+#=================================================
+def std_weight(height, gender): # 키는 미터 단위(실수), 성별은 문자열 형태로 받는다. 
+    if gender == "남자" :
+        return height*height*22 
+    else :
+        return height*height*21 
+
+height = 175 # cm단위 
+gender = "남자"
+weight = round(std_weight(height / 100, gender), 2) # 미터변환 , round(~, 2) > 소수점 둘째 자리까지 체크해줘 
+print("키 {0}cm {1}의 표준 체중은 {2}kg 입니다.".format(height, gender, weight) ) 
+
+print("========표준입출력=======")  
+
+# sep를 통해 지정 
+print("python", "java", sep=" , ")
+print("python", "java", "http", sep=" vs ") # 문장 사이사이에 뭐가 들어갈지 정한다. python vs java vs http  /  seperate 
+
+print("python", "java", "http", end="?") # end="?"는 문장의 끝 부분을 물음표로 바꾸라는 의미다. python java http무엇이 더 재밌을까요?
+print("무엇이 더 재밌을까요?")
+
+#
+import sys 
+print("python", "java", file=sys.stdout) # 표준 출력으로 문장이 찍힌다. 
+print("python", "java", file =sys.stderr) # 표준 에러로 처리 (로깅을 따로 해서 에러처리 하기 위한 용도) 둘다 출력은 같다. python java 
+
+
+# 시험 성적 
+scores= {"수학": 100, "영어" : 95, "국어": 100}
+
+for subject, score in scores.items(): # .items() > 키, 값이 쌍으로 출력됨 
+    print(subject.ljust(3), str(score).rjust(4), sep=":") # 4칸 공간 확보 후 왼쪽 정렬 / .rjust(4) > 오른쪽 정렬 후 4번 정렬 
+
+#은행 대기순번표 
+# 001, 002, 003 ,...
+for num in range(1, 21):  # 1부터 20까지의 수 출력 
+    print("대기번호 :" + str(num).zfill(3)) # .zfill(3) > 3개 만큼의 공간을 확보하고 남는 공간은 0으로 채워주는 함수 
+
+
+# 표준입력 
+# answer = input("값을 입력하세요: ")
+# print("입력값은 " + answer + "입니다. ")
+# print(type(answer)) # 정수를 입력해도, 문자열을 입력해도 string 타입이 나온다. 
+
+num = 10
+print(type(num)) # 이때는 int 타입으로 나온다. 
+# 따라서 사용자입력 형태로 값을 받게 되면 항상 문자열 형태로 저장된다. 
+
+print("========다양한 출력 포맷=========")
+
+# 빈 자리는 빈공간으로 두고, 오른쪽 정렬을 하되, 총 10자리 공간을 확보 
+print("{0: >10}".format(500))
+
+# 양수일 때는 +로 표시, 음수일 땐 -로 표시. 정수 앞에 +를 붙여주면 음수표현도 가능함. 위의 상태에서는 음수를 대입해도 양수가 출력된다. 
+print("{0: >+10}".format(500))
+print("{0: >+10}".format(-500))
+
+# 왼쪽 정렬하고, 빈칸으로 언더바를 채운다. 
+print("{0:/<10}".format(100))  # 100/////// 
+print("{0:_<+10}".format(-100)) # +100______ , :과 < 사이에 빈공간이 하나 이상 있으면 안된다. 
+
+# 3자리 마다 콤마를 찍어주기 
+print("{0:,}".format(123456789))  # 123,456,789
+print("{0:+,}".format(1000000000000))  # -1,000,000,000,000 컴마 앞에 +를 붙이면 음수표현도 가능하다. 
+# 3자리 마다 콤마를 찍어주기, 부호도 붙이고, 자릿수 확보하기, 빈 자리는 ^로 
+print("{0:^<+50,}".format(-1000000000000000)) # 1. 빈자리 뭘로 채울지 /  2. 오른쪽 정렬 / 3. +로 부호 붙이기 / 4. 몇 자리 공간을 확보할 것인지(공간이 들어가는 정수 보다 작다면 ^가 출력이 안될 수 있다. )
+# -1,000,000,000,000,000^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+
+# 소수점 출력 
+print("{0:f}".format(5/3))  # 1.666667 
+print("{0:.2f}".format(5/3))  # 1.67 
+print("{0:.3f}".format(5/3))  #1.667 
+
+print("=======파일 입출력=======")
+# 파일을 열었으면 항상 닫는 것 까지 해야됨 
+# score_file = open("score.txt", "w", encoding="utf8")  # open( 파일 이름, 파일을 사용할 형식, 인코딩 방식) encoding = "utf8"은 한글이 원활하게 표현하기 위해 사용한다. 
+# print("수학 : 100", file = score_file) # w는 파일 쓰기 형식으로 오픈 / 파일 이름 적을 때 항상 문자열 형식 준수! 
+# print("영어 : 100", file = score_file)
+# print("국어 : 100", file = score_file)
+# score_file.close() # 파일 닫음 
+# 좌측 explorer열어 보면, score.txt 파일이 생성된 걸 알 수 있다.  
+
+# 파일 이어쓰기 
+# score_file = open("score.txt", "a", encoding="utf8") # a형식으로 파일열기 apend: 기존에 생성된 파일에 계속 쓰고싶을 때 사용한다. 
+# score_file.write("과학 : 100")
+# score_file.write("\n코딩 : 100") # print를 사용했을 때는 자동을 줄바꿈이 되지만 write를 사용할 때는 자동으로 안된다. \n으로 명시적인 정의가 필요하다. 
+# score_file.close() 
+
+# 파일 읽기 
+# score_file = open("score.txt", "r", encoding="utf8")
+# print(score_file.read()) # 파일의 모든 내용을 읽어와 출력한다. 
+# # print(score_file.read() + "\n") > 다 불러오고 한칸 띄고 마무리 
+# score_file.close()
+
+# 파일을 한 줄씩 읽어오고 싶을 때 
+# score_file = open("score.txt", "r", encoding="utf8") 
+# print(score_file.readline()) # 한 줄만 읽어오고 커서를 다음 줄로 이동시킨다. # print에서는 자동으로 줄바꿈을 해줘서 한 줄씩 더 출력된다. 
+# print(score_file.readline(), end="")  # 줄바꿈을 하기 싫을 때는 이렇게 표시하면 된다. 
+# print(score_file.readline())
+# print(score_file.readline())
+
+#몇줄인지 모를 때 줄처리 
+# score_file = open("score.txt", "r", encoding="utf8")  
+# while True: # 무한루프인 경우 
+#     line = score_file.readline() #score_file을 한 줄씩 읽어오고 
+#     if not line :  # line이 없다면 
+#         break  # 반복문 탈출 
+#     print(line, end="") # 한칸 띄우기 안하려면 end="" 입력
+# score_file.close()
+
+# print("\n") # 줄 띄우기 
+
+# #리스트에 값을 넣어서 처리 
+# score_file = open("score.txt", "r", encoding="utf8")  
+# lines = score_file.readlines() # 모든 라인을 가지고 와서 list 형태로 저장한다. 
+# for line in lines:  # 리스트에서 한 줄 씩 읽어와 line변수에 넣어주고 출력 (줄 추가 없이)
+#     print(line, end="")
+# score_file.close()
+# print("\n")
+
+
+print("=========pickle========")
+# 프로그램상에서 사용하는 데이터를 파일 형태로 저장하는 것 
+import pickle  # pickle 모듈 import 
+profile_file = open("profile.pickle", "wb") # wb는 쓰기형태, 바이너리를 의미한다. 피클을 사용하려면 반드시 바이너리 타입을 정의해줘야한다. 그리고 피클에서 따로 인코딩을 설정할 필요가 없다. 
 
 
 
