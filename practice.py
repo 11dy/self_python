@@ -728,8 +728,80 @@ print("=======파일 입출력=======")
 
 print("=========pickle========")
 # 프로그램상에서 사용하는 데이터를 파일 형태로 저장하는 것 
-import pickle  # pickle 모듈 import 
-profile_file = open("profile.pickle", "wb") # wb는 쓰기형태, 바이너리를 의미한다. 피클을 사용하려면 반드시 바이너리 타입을 정의해줘야한다. 그리고 피클에서 따로 인코딩을 설정할 필요가 없다. 
+# import pickle  # pickle 모듈 import 
+# profile_file = open("profile.pickle", "wb") # wb는 쓰기형태, 바이너리를 의미한다. 피클을 사용하려면 반드시 바이너리 타입을 정의해줘야한다. 그리고 피클에서 따로 인코딩을 설정할 필요가 없다. 
+# profile = {"이름":"이동열", "나이":26, "전공":"컴퓨터공학", "취미": ["유튜브","글쓰기","사진"]}# 사전형태로 생성 
+# print(profile)
+# pickle.dump(profile, profile_file)# 가장 중요한 부분. 피클을 통해 파일에 데이터를 쓰는 것.  pickle.dump(파일에 저장할 내용 정의, 어떤 파일을 쓸 것인지) > profile에 있는 정보를 file에 저장 
+# profile_file.close()
+
+# profile_file = open("profile.pickle", "rb")
+# profile = pickle.load(profile_file) # 파일에 있는 정보를 profile에 불러오기 
+# print(profile)
+# profile_file.close()
+
+print("=============with==============")
+#pickle의 내용을 좀 더 편하게 할 수 있다. 
+# import pickle
+# with open("profile.pickle", "rb") as profile_file: # 이전에 저장해둔 profile_file 불러옴 
+#     print(pickle.load(profile_file))
+# # with문을 사용하면 close()할 필요없이 자동으로 종료해준다. 
+
+#pickle이 아닌 일반적인 파일을 with문을 사용하여 열 때 
+with open("study.txt", "w", encoding = "utf8") as study_file:   # 불러온 파일을 study_file에 저장 
+    study_file.write("파이썬을 잘 공부하고 있습니다.")
+# > 두 줄에 걸쳐서 파일을 쓸 수 있다. 
+
+with open("study.txt", "r", encoding="utf8") as study_file: #  
+    print(study_file.read())  # 모든 내용을 읽어와서 출력문에 출력 
+
+# print("==========quiz==========")
+# for x in range(1, 51): 
+#  with open( str(x) +"주차.txt", "w", encoding="utf8") as week_report: 
+#     week_report.wite("-" +  str(x) + " 주차 주간보고 - ")
+#     week_report.wite("부서 :" )
+#     week_report.wite("이름 :")
+#     week_report.wite("업무 요약 :")
+
+#============================================
+# 정답 
+# for x in range(1, 51):
+#     with open( str(x) +"주차.txt", "w", encoding="utf8") as week_report: 
+#      week_report.wite("- {0} 주차 주간보고 - \n".format(i))
+#      week_report.wite("부서 :\n" )
+#      week_report.wite("이름 :\n")
+#      week_report.wite("업무 요약 :\n")   여러번 생성하면 덮어쓰기가 진행된다. 
+
+# ///////// 많은 파일을 지울 때 첫 항목을 선택하고 시프트를 누른 상태에서 마지막 항목을 선택하면 여러 항목이 선택된다. > 마우스 오른쪽 클릭 후 딜리트 
+
+
+print("===================class=================")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
