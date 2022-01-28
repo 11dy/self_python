@@ -470,7 +470,7 @@ for student in range(1, 11) :  # 10명의 인원
         print("{0}야 책을 읽어줘".format(student))
 
 # 한줄 for문 
-# 출석번호가 1,2,3,4 이고, 아펭 100을 붙이기로 함 -> 101, 102,103,104 
+# 출석번호가 1,2,3,4 이고, 앞에 100을 붙이기로 함 -> 101, 102,103,104 
 students = [1,2,3,4]
 students = [i+100 for i in students]  # student에서 값을 불러와 i에 저장하고 +100한 값을 students리스트에 저장. 
 print(students)
@@ -629,7 +629,7 @@ print("무엇이 더 재밌을까요?")
 #
 import sys 
 print("python", "java", file=sys.stdout) # 표준 출력으로 문장이 찍힌다. 
-print("python", "java", file =sys.stderr) # 표준 에러로 처리 (로깅을 따로 해서 에러처리 하기 위한 용도) 둘다 출력은 같다. python java 
+print("python", "java", file=sys.stderr) # 표준 에러로 처리 (로깅을 따로 해서 에러처리 하기 위한 용도) 둘다 출력은 같다. python java 
 
 
 # 시험 성적 
@@ -776,6 +776,120 @@ with open("study.txt", "r", encoding="utf8") as study_file: #
 
 
 print("===================class=================")
+
+class Unit:
+    def __init__(self, name, hp, damage):
+        self.name = name
+        self.hp = hp 
+        self.damage = damage 
+        print("{0} 유닛이 생성 되었습니다.".format(self.name))
+        print("체력: {0} / 공격력: {1}".format(hp, damage))
+
+# #외부에서 변수 = 클래스명(self를 제외한 나머지 객체들 입력)
+# marine1 = Unit("마린", 100, 50)
+# tank = Unit("탱크", 300, 150)   #marine1, tank는 Unit 클래스의 인스턴스 
+
+# print("=========__init__함수=========")
+# #__init__ > 생성자 , 클래스의 객체가 만들어질 때 자동으로 호출되는 부분 
+
+# print("======멤버변수========")
+# #name, hp, damage 같은 것들을 멤버변수라고 한다. > 클래스 내에서 정의된 변수들 
+
+# wraith1 = Unit("레이스", 80, 5)
+# print("유닛 이름: {0} / 공격력: {1}".format(wraith1.name, wraith1.damage))
+# wraith2 = Unit("레이스", 80, 5)
+# wraith2.clocking = True # 클래스에 클로킹 객체 생성 
+
+# if wraith2.clocking == True:
+#     print("{0} 는 현재 클로킹 상태입니다.".format(wraith2.name))
+
+
+print("================메소드==================")
+
+class AttackUnit:
+    def __init__(self, name, hp, damage):
+        self.name = name
+        self.hp = hp 
+        self.damage = damage 
+        
+    def attack(self, location):
+        print("{0} : {1} 방향으로 적군을 공격합니다. / 공격력: {2}" \
+            .format(self.name, location, self.damage ))  # self가 붙은 객체와 다르게 location은 전달받은 값을 그대로 사용한다는 의미다. 
+
+    def damaged(self, damage):
+        print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+        self.hp-= damage
+        print("{0}: 현재 체력은 {1} 입니다.".format(self.name, self.hp)) 
+        if self.hp <= 0:
+            print("{0}: destroied".format(self.name))
+
+
+firebat1 = AttackUnit("파이어뱃", 50, 16)
+firebat1.attack("5시")
+
+firebat1.damaged(25)
+firebat1.damaged(25)
+
+print("==========상속=========")
+# 상위 클래스의 내용을 상속 받아서 하위 클래스를 생성하는 것 
+
+class Unit:
+    def __init__(self, name, hp):
+        self.name = name
+        self.hp = hp 
+        
+
+class AttackUnit(Unit):  # Unit을 상속하는 클래스인 AttackUnit
+    def __init__(self, name, hp, damage):
+        Unit.__init__(self, name, hp)   # 멤버변수와 메소드 상속 
+        self.damage = damage 
+
+print("==============다중 상속==============")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
