@@ -833,27 +833,68 @@ firebat1.damaged(25)
 print("==========상속=========")
 # 상위 클래스의 내용을 상속 받아서 하위 클래스를 생성하는 것 
 
-class Unit:
-    def __init__(self, name, hp):
+class Unit:   # 부모클래스 
+    def __init__(self, name, hp, speed):
         self.name = name
         self.hp = hp 
-        
+        self.speed = speed 
 
-class AttackUnit(Unit):  # Unit을 상속하는 클래스인 AttackUnit
-    def __init__(self, name, hp, damage):
-        Unit.__init__(self, name, hp)   # 멤버변수와 메소드 상속 
+    def move(self, location):
+        print("지상 유닛 이동")
+        print("{0}: {1} 방향으로 이동합니다. 속도[{2}]"\
+            .format(self.name, location, self.speed)) #
+
+class AttackUnit(Unit):  # Unit을 상속하는 클래스인 AttackUnit 자식 클래스 
+    def __init__(self, name, hp, speed, damage):
+        Unit.__init__(self, name, hp, speed)   # 멤버변수와 메소드 상속 
         self.damage = damage 
+        self.speed = speed 
 
 print("==============다중 상속==============")
+# 부모노드가 둘 이상이라는 의미다. 
+# 공중 유닛 드랍쉽: 수송기, 마린/파이어뱃/ 탱크 등을 수송 > 공격기능은 없다 
+
+class Flyable: 
+    def __init__(self, flying_speed):
+        self.flying_speed = flying_speed # 멤버 변수 초기화  
+
+    def fly(self, name, location):
+        print("{0} : {1} 방향으로 날아갑니다. [속도 {2}]"\
+            .format(name, location, self.flying_speed ))  
+
+# 다중상속을 받을 경우는 콤마로 구분 
+class FlyableAttackUnit(AttackUnit, Flyable): # 클래스 두 개를 상속받아 
+    def __init__(self, name, hp, damage, flying_speed):
+        AttackUnit.__init__(self, name, hp, 0, damage)  # 초기화 , 지상 스피드는 0 
+        Flyable.__init__(self, flying_speed)
+
+    def move(self, location):
+        print("[공중유닛이동]")
+        self.fly(self.name, location) # name을 보내주기 때문에 location 정보만 받으면 된다. 
 
 
+# # 발키리 : 공중 공격 유닛, 한번에 다수의 미사일 발사 
+# valkyrie = FlyableAttackUnit("발키리", 200, 6, 5)
+# valkyrie.fly(valkyrie.name, "3시")  # Flyable에 있는 fly 함수 호출 Fylable에는 속도만 초기화 되어있음 그래서 별도로 이름을 추가 
 
 
+print("===================메소드 오버라이딩===================")
+#메소드를 재정의 해서 사용하는 방법 
 
+# 벌쳐 : 지상 유닛, 기동성이 좋음 
+vulture = AttackUnit("벌쳐", 80, 10, 20)
 
+#배틀크루저: 공중 유닛, 체력 굿, 공격력 굿 
+battlecruiser = FlyableAttackUnit("배틀크루저", 500, 25, 3)
 
+vulture.move("11시")
+#battlecruiser.fly(battlecruiser.name, "9시")
+# 연산자 오버라이딩을 통해 지상유닛이면 무브, 공중유닛이면 날아가는 것을 표현한다. 
 
+battlecruiser.move("9시")
+#AttackUnit의 경우 상속하는 Unit의 move()함수가 실행되지만 AttackUnit을 상속하는 FlyableAttackUnit의 경우 재정의한 move함수가 실행된다. 
 
+print("============pass============")
 
 
 
