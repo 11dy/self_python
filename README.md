@@ -1,5 +1,5 @@
 ## The Python Tutorial 
-h2 python 문법공부
+python 문법공부
 
 [link](https://www.youtube.com/watch?v=kWiCuklohdY&list=TLPQMzEwMTIwMjJlJNQxzfaSbg&index=1)
 
